@@ -30,8 +30,8 @@ public class Project {
     @Column(name = "deadline")
     private String deadline;
 
-    @Column(name = "steps")
-    private String steps;
+    @Column(name = "stage")
+    private String stage;
 
     public Integer getId() {
         return id;
@@ -73,12 +73,11 @@ public class Project {
         this.deadline = deadline;
     }
 
-    public String getSteps() {
-        return steps;
+    public String getStage() {
+        return stage;
     }
 
-    public void setSteps(String steps) {
-        this.steps = steps;
+    public void setStage(String stage) {
+        this.stage = stage;
     }
-
 }

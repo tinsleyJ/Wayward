@@ -1,42 +1,40 @@
 package com.projectPlanner.controller;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.projectPlanner.entity.Project;
+import com.projectPlanner.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.projectPlanner.entity.Project;
-import com.projectPlanner.service.ProjectService;
+import java.util.List;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
+@RequestMapping("/project")
 public class ProjectController {
 
-
     @Autowired
-    private ProjectService projectService;
+    ProjectRepository projectRepository;
 
-    public ProjectController(ProjectService projectService) {
-        this.projectService = projectService;
+    public ProjectController(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
     }
 
-    @PostMapping(value = "/submitProjectDetails")
-    public void submitProjectDetails(@RequestBody Project project) {
-        projectService.save(project);
+    @PostMapping("/submitProjectDetails")
+    public ResponseEntity<Project> submitProjectDetails(@RequestBody Project project) {
+        project = projectRepository.save(project);
+        return new ResponseEntity<>(project, HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/getAllProjects")
-    public ResponseEntity<List<Project>> getAllProjects() {
-        return new ResponseEntity<>(projectService.getAllProjects(), HttpStatus.OK);
+    @GetMapping("/getAllProjects")
+    public List<Project> getAllProjects() {
+        return projectRepository.findAll();
     }
 
-    // 9 Jan Stopped- Get to find by name
-    @GetMapping(value = "/findProjectByName")
-    public ResponseEntity<Optional<Project>> findByName(String name) {
-        return new ResponseEntity<>(projectService.findByProjectName(name), HttpStatus.OK);
+    @GetMapping("/findProjectByName/{name}")
+    public Iterable<Project> findProjectByName(@PathVariable String name) {
+        return (projectRepository.findByProjectName(name));
     }
 
 }
