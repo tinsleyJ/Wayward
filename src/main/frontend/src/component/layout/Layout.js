@@ -5,7 +5,8 @@ import About from "../about/About";
 import ThankYou from "../thankYou/ThankYou";
 import Clock from "../clock/Clock";
 import { Route, withRouter } from "react-router-dom";
-import Preferences from "../preferences/Preferences";
+import UserList from "../user/Userlist";
+import ProjectList from "../project/ProjectList";
 
 const Layout = () => {
   return (
@@ -15,7 +16,8 @@ const Layout = () => {
       <Route path="/about-us" component={About} />
       <Route path="/sign-up" component={Signup} />
       <Route path="/thank-you" component={ThankYou} />
-      <Route path="/preferences" component={Preferences} />
+      <Route path="/user-list" component={UserList} />
+      <Route path="/project-list" component={ProjectList} />
       <Clock />
     </div>
   );

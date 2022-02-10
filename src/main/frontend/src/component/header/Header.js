@@ -51,6 +51,17 @@ const Header = () => {
                     Todo
                   </Link>
                 </li>
+                <div></div>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/user-list">
+                    User List
+                  </Link>
+                </li>{" "}
+                <li className="nav-item">
+                  <Link className="nav-link" to="/project-list">
+                    Project List
+                  </Link>
+                </li>
               </ul>
               <form className="d-flex">
                 <input
