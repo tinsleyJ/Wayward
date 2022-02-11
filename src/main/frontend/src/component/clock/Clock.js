@@ -21,7 +21,7 @@ class Clock extends React.Component {
 
   render() {
     return (
-      <div className="clock-position clock-style">
+      <div className="clock-style">
         <h2>
           <em>{this.state.time}</em>
         </h2>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Header = () => {
   const [signInUser, setSignInUser] = useState({
@@ -18,9 +19,9 @@ const Header = () => {
   return (
     <div>
       <header>
-        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark fixed-header">
+        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark custom-header">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/home">
               Wayward
             </Link>
             <button
@@ -37,33 +38,28 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <ul className="navbar-nav me-auto mb-2 mb-md-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sign-up">
-                    Sign up
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/about-us">
-                    About Us
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/todo">
-                    Todo
-                  </Link>
-                </li>
-                <div></div>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/user-list">
-                    User List
-                  </Link>
-                </li>{" "}
-                <li className="nav-item">
                   <Link className="nav-link" to="/project-list">
-                    Project List
+                    Your Projects
                   </Link>
                 </li>
+                <li>
+                  <Link className="nav-link" to="/about-us">
+                    About
+                  </Link>
+                </li>
+                <div class="dropdown">
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success">
+                      Test Links
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="/todo">Todo</Dropdown.Item>
+                      <Dropdown.Item href="/user-list">User List</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
               </ul>
-              <form className="d-flex">
+              <form className="d-flex custom-button">
                 <input
                   className="form-control me-2"
                   onChange={changeHandler}
