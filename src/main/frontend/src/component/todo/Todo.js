@@ -47,38 +47,22 @@ function Todo() {
         Add
       </button>
       <table class="table">
-        <thead class="thead-dark">
+        <thead class="table-dark">
           <tr>
-            <th scope="col">To-do List</th>
+            <th>Step</th>
+            <th>Creation Date</th>
           </tr>
         </thead>
+
         <tr>
-          <List items={items} remove={remove} strike={strike} />
+          <td>
+            <List items={items} remove={remove} strike={strike} />
+          </td>
+          <td>
+            <em>Date will go here</em>
+          </td>
         </tr>
       </table>
-      {/* <li style={{ textDecorationLine: "line-through" }}>Navbar</li>
-      <li style={{ textDecorationLine: "line-through" }}>Clock</li>
-      <li>
-        Registration -{" "}
-        <em>Simple Registration complete. Checks and errors need revisited.</em>
-      </li>
-      <li>Login</li>
-      <li style={{ textDecorationLine: "line-through" }}>To-Do list</li>
-      <li>
-        Add Project - <em>Backend Complete</em>
-      </li>
-      <li>
-        Delete Project - <em>Backend Complete</em>
-      </li>
-      <li>
-        Edit Project - <em>Backend Complete</em>
-      </li>
-      <li>
-        View Project Page - <em>Backend Complete</em>
-      </li>
-      <li>Timestamp stages</li>
-      <li>Notifications</li>
-      <li>Motivational Polish</li> */}
     </div>
   );
 }

@@ -44,5 +44,10 @@ public class ProjectController {
         return (projectRepository.findById(id));
     }
 
+    @PostMapping("/deleteById/{id}")
+    public void deleteById(@PathVariable Integer id) {
+        projectRepository.deleteById(id);
+    }
+
 }
 

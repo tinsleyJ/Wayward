@@ -12,4 +12,6 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     Iterable<Project> findByProjectName(String projectName);
 
     Optional<Project> findById(Integer id);
+
+    void deleteById(Integer id);
 }

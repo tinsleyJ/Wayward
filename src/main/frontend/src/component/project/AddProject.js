@@ -8,7 +8,6 @@ const AddProject = () => {
     projectDescription: "",
     startDate: "",
     deadline: "",
-    stage: "",
     image: "",
   });
 
@@ -22,29 +21,36 @@ const AddProject = () => {
 
   const projectSubmitHandler = (event) => {
     const name = event.target.name;
-    let isValid = true;
+    let isValid = false;
+    let nameIsValid = false;
+    let descriptionIsValid = false;
+    let startDateIsValid = false;
 
     if (!name.projectName) {
-      isValid = false;
+      nameIsValid = true;
+    } else {
       console.log("Please enter your project name");
     }
 
     if (!name.projectDescription) {
-      isValid = false;
+      descriptionIsValid = true;
+    } else {
       console.log("Please enter your project description");
     }
 
     if (!name.startDate) {
-      isValid = false;
+      startDateIsValid = true;
+    } else {
       console.log("Please your project start date");
     }
 
-    if (name.deadline) {
+    if (nameIsValid && descriptionIsValid && startDateIsValid === true) {
+      isValid = true;
+    } else {
       isValid = false;
-      console.log("Please your project deadline");
     }
-
-    if (isValid !== true) {
+    if (isValid === true) {
+      console.log("project submitted");
       axios.post("http://localhost:8080/project/submitProjectDetails", project);
     }
   };
@@ -100,15 +106,6 @@ const AddProject = () => {
               />{" "}
             </div>{" "}
             <div className="col-md-6">
-              <label class="form-check-label">Current Stage:</label>
-              <textarea
-                type="text"
-                onChange={projectChangeHandler}
-                name="state"
-                value={project.stage}
-                className="form-control"
-                id="inputStage"
-              />
               <div className="form-group files color">
                 <label>Image</label>
                 <input

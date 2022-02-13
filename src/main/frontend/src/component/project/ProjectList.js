@@ -33,7 +33,6 @@ export default class ProjectList extends React.Component {
               <th>Description</th>
               <th>Start Date</th>
               <th>Deadline</th>
-              <th>Current Stage</th>
               <th></th>
             </tr>
           </thead>
@@ -67,7 +66,6 @@ export default class ProjectList extends React.Component {
                 <td>{project.projectDescription}</td>
                 <td>{project.startDate}</td>
                 <td>{project.deadline}</td>
-                <td>{project.stage}</td>
                 <td>
                   <button className="btn btn-outline-danger">
                     <svg

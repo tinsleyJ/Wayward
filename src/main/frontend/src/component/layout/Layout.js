@@ -8,9 +8,9 @@ import ThankYou from "../thankYou/ThankYou";
 import Clock from "../clock/Clock";
 import UserList from "../user/Userlist";
 import ProjectList from "../project/ProjectList";
-import ProjectPage from "../project/ProjectPage";
+import ProjectCard from "../project/ProjectCard";
 import AddProject from "../project/AddProject";
-
+import EditProject from "../project/EditProject";
 const Layout = () => {
   return (
     <div>
@@ -22,7 +22,7 @@ const Layout = () => {
       <Route path="/thank-you" component={ThankYou} />
       <Route path="/user-list" component={UserList} />
       <Route path="/project" component={ProjectList} />
-      <Route path="/project/:id" component={ProjectPage} />
+      <Route path="/project/:id" component={ProjectCard} />
       <Route path="/add-project" component={AddProject} />
       <Clock />
     </div>

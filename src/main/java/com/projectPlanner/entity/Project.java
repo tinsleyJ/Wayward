@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.awt.*;
 
 @Data
 @NoArgsConstructor
@@ -30,9 +29,6 @@ public class Project {
 
     @Column(name = "deadline")
     private String deadline;
-
-    @Column(name = "stage")
-    private String stage;
 
     @Column(name = "image")
     private byte[] image;
@@ -75,14 +71,6 @@ public class Project {
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
-    }
-
-    public String getStage() {
-        return stage;
-    }
-
-    public void setStage(String stage) {
-        this.stage = stage;
     }
 
     public byte[] getImage() {
