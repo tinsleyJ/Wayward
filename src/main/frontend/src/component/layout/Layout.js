@@ -9,19 +9,21 @@ import Clock from "../clock/Clock";
 import UserList from "../user/Userlist";
 import ProjectList from "../project/ProjectList";
 import ProjectPage from "../project/ProjectPage";
+import AddProject from "../project/AddProject";
 
 const Layout = () => {
   return (
     <div>
       <Header />
-      <Route path="/home" component={Home} />
+      <Route exact path="/" component={Home} />
       <Route path="/todo" component={Todo} />
-      <Route path="/about-us" component={About} />
+      <Route path="/about" component={About} />
       <Route path="/sign-up" component={Signup} />
       <Route path="/thank-you" component={ThankYou} />
       <Route path="/user-list" component={UserList} />
-      <Route path="/project-list" component={ProjectList} />
-      <Route path="/project/{id}" component={ProjectPage} />
+      <Route path="/project" component={ProjectList} />
+      <Route path="/project/:id" component={ProjectPage} />
+      <Route path="/add-project" component={AddProject} />
       <Clock />
     </div>
   );

@@ -56,7 +56,7 @@ function Todo() {
           <List items={items} remove={remove} strike={strike} />
         </tr>
       </table>
-      <li style={{ textDecorationLine: "line-through" }}>Navbar</li>
+      {/* <li style={{ textDecorationLine: "line-through" }}>Navbar</li>
       <li style={{ textDecorationLine: "line-through" }}>Clock</li>
       <li>
         Registration -{" "}
@@ -78,7 +78,7 @@ function Todo() {
       </li>
       <li>Timestamp stages</li>
       <li>Notifications</li>
-      <li>Motivational Polish</li>
+      <li>Motivational Polish</li> */}
     </div>
   );
 }

@@ -4,20 +4,27 @@ import { Link } from "react-router-dom";
 
 export default class ProjectList extends React.Component {
   state = {
-    projects: [],
+    project: [],
   };
 
   componentDidMount() {
     axios.get(`http://localhost:8080/project/getAllProjects`).then((res) => {
-      const projects = res.data;
-      this.setState({ projects });
+      const project = res.data;
+      this.setState({ project });
     });
   }
 
   render() {
     return (
       <div class="container">
-        <h1 class="table custom-table">Your Projects</h1>
+        <h1 class="inline-header">Your Projects</h1>
+        <Link
+          to="/add-project"
+          class="btn btn-outline-success project-add-button"
+        >
+          Add Project
+        </Link>
+
         <table class="table custom-table  table-striped">
           <thead class="table-dark">
             <tr>
@@ -31,12 +38,17 @@ export default class ProjectList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.projects.map((projects) => (
-              <tr key={projects.id}>
+            {this.state.project.map((project) => (
+              <tr key={project.id}>
                 <td class="project-list-image card">
                   <div class="project-list-image">
-                    <a href={`/project/${projects.id}`}>
-                      {projects.projectImage}
+                    <Link
+                      to={{
+                        pathname: `/project/${project.id}`,
+                        state: project,
+                      }}
+                    >
+                      {project.image}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -48,14 +60,14 @@ export default class ProjectList extends React.Component {
                         <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                         <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </td>
-                <td>{projects.projectName}</td>
-                <td>{projects.projectDescription}</td>
-                <td>{projects.startDate}</td>
-                <td>{projects.deadline}</td>
-                <td>{projects.stage}</td>
+                <td>{project.projectName}</td>
+                <td>{project.projectDescription}</td>
+                <td>{project.startDate}</td>
+                <td>{project.deadline}</td>
+                <td>{project.stage}</td>
                 <td>
                   <button className="btn btn-outline-danger">
                     <svg
@@ -73,7 +85,6 @@ export default class ProjectList extends React.Component {
             ))}
           </tbody>
         </table>
-        ))
       </div>
     );
   }

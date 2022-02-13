@@ -21,7 +21,7 @@ const Header = () => {
       <header>
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark custom-header">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/home">
+            <Link className="navbar-brand" to="/">
               Wayward
             </Link>
             <button
@@ -38,12 +38,12 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <ul className="navbar-nav me-auto mb-2 mb-md-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/project-list">
-                    Your Projects
+                  <Link className="nav-link" to="/project">
+                    Projects
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link" to="/about-us">
+                  <Link className="nav-link" to="/about">
                     About
                   </Link>
                 </li>

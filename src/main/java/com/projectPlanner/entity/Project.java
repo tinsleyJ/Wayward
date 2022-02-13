@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Data
 @NoArgsConstructor
@@ -32,6 +33,9 @@ public class Project {
 
     @Column(name = "stage")
     private String stage;
+
+    @Column(name = "image")
+    private byte[] image;
 
     public Integer getId() {
         return id;
@@ -79,5 +83,13 @@ public class Project {
 
     public void setStage(String stage) {
         this.stage = stage;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

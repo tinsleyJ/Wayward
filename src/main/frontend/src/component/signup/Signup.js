@@ -49,7 +49,7 @@ const Signup = () => {
   return (
     <div className="sign-up-container">
       <form className="row g-3">
-        <h2> Sign up below</h2>
+        <h3> Sign up below</h3>
         <div className="col-md-6">
           <label for="inputFirstName" className="form-label">
             Email

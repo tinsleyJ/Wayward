@@ -20,11 +20,11 @@ const About = () => {
       </div>
       <div className="w3-row">
         <div className="w3-half w3-container">
+          <p className="w3-xlarge w3-text-grey">----------------------------</p>
           <p className="w3-xlarge w3-text-grey">
-            --------------Add functionality to show recent projects, images,
-            names--------------
+            Add functionality to show recent projects, images, names
           </p>
-          <p>Desk, Logos, Media, Books, Optimisations</p>
+          <p className="w3-xlarge w3-text-grey">----------------------------</p>
         </div>
       </div>
     </div>

@@ -77,7 +77,6 @@ body {
   margin-right: 10px;
   border: none;
   color: rgb(158, 0, 0);
-  opacity: 1;
   -webkit-transition: opacity 1000ms linear;
   transition: opacity 1000ms linear;
 }
@@ -142,4 +141,14 @@ body {
 
 .big-button:hover {
   opacity: 1;
+}
+
+.inline-header {
+  margin: 0;
+  display: inline-block;
+}
+
+.project-add-button {
+  float: right;
+  right: auto;
 }
