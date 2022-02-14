@@ -44,9 +44,22 @@ public class ProjectController {
         return (projectRepository.findById(id));
     }
 
-    @PostMapping("/deleteById/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable Integer id) {
         projectRepository.deleteById(id);
+    }
+
+    @PutMapping("/updateProjectDetailsById/{id}")
+    public ResponseEntity<Project> updateProject(@PathVariable Integer id, @RequestBody Project project) {
+        Project p = projectRepository.findById(id).get();
+        if (p.getId() != 0) {
+            p.setProjectName(project.getProjectName());
+            p.setProjectDescription(project.getProjectDescription());
+            p.setStartDate(project.getStartDate());
+            p.setDeadline(project.getDeadline());
+            p.setImage(project.getImage());
+        }
+        return new ResponseEntity<Project>(projectRepository.save(p), HttpStatus.OK);
     }
 
 }

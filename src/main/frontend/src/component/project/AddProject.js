@@ -10,7 +10,6 @@ const AddProject = () => {
     deadline: "",
     image: "",
   });
-
   const projectChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -20,50 +19,17 @@ const AddProject = () => {
   };
 
   const projectSubmitHandler = (event) => {
-    const name = event.target.name;
-    let isValid = false;
-    let nameIsValid = false;
-    let descriptionIsValid = false;
-    let startDateIsValid = false;
-
-    if (!name.projectName) {
-      nameIsValid = true;
-    } else {
-      console.log("Please enter your project name");
-    }
-
-    if (!name.projectDescription) {
-      descriptionIsValid = true;
-    } else {
-      console.log("Please enter your project description");
-    }
-
-    if (!name.startDate) {
-      startDateIsValid = true;
-    } else {
-      console.log("Please your project start date");
-    }
-
-    if (nameIsValid && descriptionIsValid && startDateIsValid === true) {
-      isValid = true;
-    } else {
-      isValid = false;
-    }
-    if (isValid === true) {
-      console.log("project submitted");
-      axios.post("http://localhost:8080/project/submitProjectDetails", project);
-    }
+    axios.post("http://localhost:8080/project/submitProjectDetails", project);
   };
 
   return (
-    <div class="container">
+    <div className="container">
       <form>
         <h3>Add Project</h3>
         <div>
           <form>
-            {" "}
             <div className="col-md-6">
-              <label class="form-check-label">Project Name: </label>
+              <label className="form-check-label">Project Name: </label>
               <input
                 type="text"
                 onChange={projectChangeHandler}
@@ -71,20 +37,21 @@ const AddProject = () => {
                 value={project.name}
                 className="form-control"
                 id="inputProjectName"
-              />{" "}
-            </div>{" "}
+              />
+            </div>
             <div className="col-md-6">
-              <label class="form-check-label col-lg ">Desciption: </label>
+              <label className="form-check-label col-lg ">Desciption: </label>
               <textarea
                 onChange={projectChangeHandler}
                 name="projectDescription"
                 value={project.projectDescription}
                 className="form-control"
                 id="inputProjectDescription"
-              />{" "}
-            </div>{" "}
+                required
+              />
+            </div>
             <div className="col-md-6">
-              <label class="form-check-label">Start Date: </label>
+              <label className="form-check-label">Start Date: </label>
               <input
                 type="date"
                 onChange={projectChangeHandler}
@@ -92,10 +59,11 @@ const AddProject = () => {
                 value={project.startDate}
                 className="form-control"
                 id="inputStartDate"
-              />{" "}
-            </div>{" "}
+                required
+              />
+            </div>
             <div className="col-md-6">
-              <label class="form-check-label">Projected Deadline: </label>
+              <label className="form-check-label">Projected Deadline: </label>
               <input
                 type="date"
                 onChange={projectChangeHandler}
@@ -103,17 +71,20 @@ const AddProject = () => {
                 value={project.deadline}
                 className="form-control"
                 id="inputDeadline"
-              />{" "}
-            </div>{" "}
+              />
+            </div>
             <div className="col-md-6">
               <div className="form-group files color">
+                <div>
+                  <img src={project.image} />
+                </div>
                 <label>Image</label>
                 <input
                   type="file"
                   onChange={projectChangeHandler}
                   name="file"
                   value={project.image}
-                  class="form-control-file"
+                  className="form-control-file"
                   id="inputImage"
                 />
               </div>

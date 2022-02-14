@@ -10,7 +10,9 @@ import UserList from "../user/Userlist";
 import ProjectList from "../project/ProjectList";
 import ProjectCard from "../project/ProjectCard";
 import AddProject from "../project/AddProject";
-import EditProject from "../project/EditProject";
+import DisplayImage from "../image/DisplayImage";
+import UpdateProject from "../project/UpdateProject";
+
 const Layout = () => {
   return (
     <div>
@@ -23,7 +25,9 @@ const Layout = () => {
       <Route path="/user-list" component={UserList} />
       <Route path="/project" component={ProjectList} />
       <Route path="/project/:id" component={ProjectCard} />
+      <Route path="/update-details/:id/" component={UpdateProject} />
       <Route path="/add-project" component={AddProject} />
+      <Route path="/display-image" component={DisplayImage} />
       <Clock />
     </div>
   );

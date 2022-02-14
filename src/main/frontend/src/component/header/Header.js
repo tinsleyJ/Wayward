@@ -47,7 +47,7 @@ const Header = () => {
                     About
                   </Link>
                 </li>
-                <div class="dropdown">
+                <div className="dropdown">
                   <Dropdown>
                     <Dropdown.Toggle variant="success">
                       Test Links
@@ -55,6 +55,9 @@ const Header = () => {
                     <Dropdown.Menu>
                       <Dropdown.Item href="/todo">Todo</Dropdown.Item>
                       <Dropdown.Item href="/user-list">User List</Dropdown.Item>
+                      <Dropdown.Item href="/display-image">
+                        Image Test Page
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>

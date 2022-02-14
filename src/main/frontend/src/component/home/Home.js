@@ -6,7 +6,7 @@ const Home = () => {
   // returns a different homepage if you are signed in
   if (!isLoggedIn) {
     return (
-      <div class="container">
+      <div className="container">
         <h1>Welcome to Wayward</h1>
         <h6>Get started on your path forward.</h6>
         <p> Get organized, stay motivated.</p>
@@ -20,7 +20,7 @@ const Home = () => {
     );
   } else {
     return (
-      <div class="container">
+      <div className="container">
         <h1>Welcome to Wayward</h1>
         <h6>Get started on your path forward.</h6>
         <p> Get organized, stay motivated.</p>

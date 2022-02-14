@@ -32,10 +32,10 @@ function Todo() {
 
   return (
     <div className="container">
-      <div class="form-floating mb-3">
+      <div className="form-floating mb-3">
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="floatingInput"
           placeholder="What's next?"
           value={inputItem}
@@ -46,11 +46,11 @@ function Todo() {
       <button className="btn btn-outline-success h4" onClick={add}>
         Add
       </button>
-      <table class="table">
-        <thead class="table-dark">
+      <table className="table">
+        <thead className="table-dark">
           <tr>
             <th>Step</th>
-            <th>Creation Date</th>
+            <th>Creation Date/Time</th>
           </tr>
         </thead>
 
