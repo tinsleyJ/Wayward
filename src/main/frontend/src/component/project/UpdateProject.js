@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import Modal from "react-bootstrap/Modal";
 import { Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 export default class UpdateProject extends React.Component {
@@ -72,8 +71,15 @@ export default class UpdateProject extends React.Component {
         `http://localhost:8080/project/updateProjectDetailsById/${this.props.match.params.id}`,
         project
       )
-      .then((res) => console.log(res.data));
-    this.props.history.push("/project");
+      .then((res) => {
+        axios
+          .get(`http://localhost:8080/project/getAllProjects`)
+          .then((res) => {
+            const project = res.data;
+            this.setState({ project });
+            window.location = "/project";
+          });
+      });
   };
 
   render() {
@@ -162,7 +168,7 @@ export default class UpdateProject extends React.Component {
               <Col sm={1}>
                 <Button type="submit" color="success">
                   Submit
-                </Button>{" "}
+                </Button>
               </Col>
               <Col sm={1}>
                 <Button color="danger">Cancel</Button>{" "}

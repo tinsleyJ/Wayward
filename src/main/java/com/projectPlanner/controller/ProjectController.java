@@ -1,13 +1,14 @@
 package com.projectPlanner.controller;
 
 import com.projectPlanner.entity.Project;
+import com.projectPlanner.entity.Todo;
 import com.projectPlanner.repository.ProjectRepository;
+import com.projectPlanner.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,14 +20,24 @@ public class ProjectController {
     @Autowired
     ProjectRepository projectRepository;
 
-    public ProjectController(ProjectRepository projectRepository) {
+    @Autowired
+    TodoRepository todoRepository;
+
+    public ProjectController(ProjectRepository projectRepository, TodoRepository todoRepository) {
         this.projectRepository = projectRepository;
+        this.todoRepository = todoRepository;
     }
 
     @PostMapping("/submitProjectDetails")
     public ResponseEntity<Project> submitProjectDetails(@RequestBody Project project) {
         project = projectRepository.save(project);
         return new ResponseEntity<>(project, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/submitProjectTodo")
+    public ResponseEntity<Todo> submitProjectTodo(@RequestBody Todo todo) {
+        todo = todoRepository.save(todo);
+        return new ResponseEntity<>(todo, HttpStatus.CREATED);
     }
 
     @GetMapping("/getAllProjects")
@@ -57,10 +68,10 @@ public class ProjectController {
             p.setProjectDescription(project.getProjectDescription());
             p.setStartDate(project.getStartDate());
             p.setDeadline(project.getDeadline());
-            p.setImage(project.getImage());
         }
-        return new ResponseEntity<Project>(projectRepository.save(p), HttpStatus.OK);
+        return new ResponseEntity<>(projectRepository.save(p), HttpStatus.OK);
     }
+
 
 }
 

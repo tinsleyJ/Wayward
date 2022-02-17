@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import List from "./List";
+import { useParams } from "react-router-dom";
 
 function Todo() {
+  const { params } = useParams();
+
   const [items, setItems] = useState([]);
   const [inputItem, setInputItem] = useState("");
 
@@ -11,6 +15,11 @@ function Todo() {
     tempItems.push(item);
     setItems(tempItems);
     setInputItem("");
+    // axios.post("http://localhost:8080/project/submitProjectTodo", {
+    //   item: item.name,
+    //   date: new Date(),
+    //   projectId: params,
+    // });
   };
 
   const strike = (index) => {
@@ -47,19 +56,15 @@ function Todo() {
         Add
       </button>
       <table className="table">
-        <thead className="table-dark">
+        <thead className="navbar-custom">
           <tr>
-            <th>Step</th>
-            <th>Creation Date/Time</th>
+            <th>To-Do</th>
           </tr>
         </thead>
 
         <tr>
           <td>
             <List items={items} remove={remove} strike={strike} />
-          </td>
-          <td>
-            <em>Date will go here</em>
           </td>
         </tr>
       </table>

@@ -20,6 +20,7 @@ const AddProject = () => {
 
   const projectSubmitHandler = (event) => {
     axios.post("http://localhost:8080/project/submitProjectDetails", project);
+    window.location = "/project";
   };
 
   return (

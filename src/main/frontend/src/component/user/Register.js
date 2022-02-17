@@ -1,13 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import React from "react";
+import { useHistory } from "react-router-dom";
 
-const Signup = () => {
+const Register = () => {
   const [user, setUser] = useState({
     email: "",
+    username: "",
     password: "",
     passwordConfirm: "",
+    error: "",
   });
+
+  const history = useHistory();
 
   const userChangeHandler = (event) => {
     const name = event.target.name;
@@ -17,39 +21,41 @@ const Signup = () => {
     setUser(tempUser);
   };
 
-  const signupSubmitHandler = (event) => {
-    const name = event.target.name;
-    let isValid = true;
-
-    if (!name.email) {
-      isValid = false;
-      console.log("Please enter your email");
-    }
-
-    if (!name.password) {
-      isValid = false;
-      console.log("Please enter your password");
-    }
-
-    if (!name.passwordConfirm) {
-      isValid = false;
-      console.log("Please a password confirmation");
-    }
-
-    if (name.password !== name.passwordConfirm) {
-      isValid = false;
-      console.log("Passwords do not match");
-    }
-
-    if (isValid !== true) {
-      axios.post("http://localhost:8080/user/register", user);
+  const isValidHandler = () => {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (
+      !user.email ||
+      !user.username ||
+      !user.password ||
+      !user.passwordConfirm
+    ) {
+      user.error = "Please fill in all fields";
+      history.push("/register");
+    } else {
+      if (reg.test(user.email) === false) {
+        user.error = "Please enter a valid email address";
+        history.push("/register");
+      } else {
+        if (user.password !== user.passwordConfirm) {
+          user.error = "Passwords do not match";
+          history.push("/register");
+        } else {
+          signupSubmitHandler();
+        }
+      }
     }
   };
 
+  const signupSubmitHandler = () => {
+    axios.post("http://localhost:8080/user/register", user).then(() => {
+      history.push("/thank-you");
+    });
+  };
+
   return (
-    <div className="sign-up-container">
+    <div className="container">
       <form className="row g-3">
-        <h3> Sign up below</h3>
+        <h3>Sign up below</h3> <p className="simple-error">{user.error}</p>
         <div className="col-md-6">
           <label for="inputFirstName" className="form-label">
             Email
@@ -61,6 +67,23 @@ const Signup = () => {
             value={user.email}
             className="form-control"
             id="inputEmail"
+            autoComplete="email"
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label for="inputFirstName" className="form-label">
+            Username
+          </label>
+          <input
+            type="text"
+            onChange={userChangeHandler}
+            name="username"
+            value={user.username}
+            className="form-control"
+            id="inputUsername"
+            autoComplete="username"
+            required
           />
         </div>
         <div className="col-md-6">
@@ -74,6 +97,7 @@ const Signup = () => {
             value={user.password}
             className="form-control"
             id="inputPassword"
+            required
           />
         </div>
         <div className="col-md-6">
@@ -87,13 +111,14 @@ const Signup = () => {
             value={user.passwordConfirm}
             className="form-control"
             id="inputPasswordConfirm"
+            required
           />
         </div>
         <div className="d-grid gap-2 ">
           <button
-            className="bg-dark btn btn-outline-success"
+            className="fancy-button2"
             type="button"
-            onClick={signupSubmitHandler}
+            onClick={isValidHandler}
           >
             Sign up
           </button>
@@ -102,5 +127,4 @@ const Signup = () => {
     </div>
   );
 };
-
-export default Signup;
+export default Register;

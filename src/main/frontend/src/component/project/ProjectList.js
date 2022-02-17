@@ -16,7 +16,7 @@ export default class ProjectList extends React.Component {
 
   handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8080/project/deleteById/` + id)
+      .delete(`http://localhost:8080/project/deleteById/${id}`)
       .then((res) => {
         axios
           .get(`http://localhost:8080/project/getAllProjects`)
@@ -27,21 +27,27 @@ export default class ProjectList extends React.Component {
       });
   };
 
+  getBase64 = () => {
+    return axios
+      .get(`http://localhost:8080/project/getAllProjects`, {
+        responseType: "arraybuffer",
+      })
+      .then((response) =>
+        ArrayBuffer.from(response.data, "binary").toString("base64")
+      );
+  };
+
   render() {
+    localStorage.getItem("loggedIn");
     return (
-      <div className="container">
-        <h1 className="inline-header">Your Projects</h1>
-        <Link
-          to="/add-project"
-          className="btn btn-outline-success project-add-button"
-        >
+      <div className="container custom-table-div">
+        <h2 className="inline-header">Your Projects</h2>
+        <Link to="/add-project" className="fancy-button bg-gradient3">
           Add Project
         </Link>
-
-        <table className="table custom-table  table-striped">
+        <table class="table table-responsive table-bordered table-striped table-hover custom-table">
           <thead className="table-dark">
             <tr>
-              <th>Image</th>
               <th>Project</th>
               <th>Description</th>
               <th>Start Date</th>
@@ -52,30 +58,17 @@ export default class ProjectList extends React.Component {
           <tbody>
             {this.state.project.map((project) => (
               <tr key={project.id}>
-                <td className="project-list-image card">
-                  <div className="project-list-image">
-                    <Link
-                      to={{
-                        pathname: `/project/${project.id}`,
-                        state: project,
-                      }}
-                    >
-                      {project.image}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-image"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
-                      </svg>
-                    </Link>
-                  </div>
+                <td>
+                  <Link
+                    to={{
+                      pathname: `/project/${project.id}`,
+                      state: project,
+                    }}
+                    className="btn"
+                  >
+                    {project.projectName}
+                  </Link>
                 </td>
-                <td>{project.projectName}</td>
                 <td>{project.projectDescription}</td>
                 <td>{project.startDate}</td>
                 <td>{project.deadline}</td>

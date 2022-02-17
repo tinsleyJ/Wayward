@@ -18,28 +18,23 @@ code {
 }
 
 body {
-  padding-top: 10%;
+  padding-top: 100px;
 }
 
 .clock-style {
-  border-width: 3px;
-  border-radius: 10px;
+  /* border-width: 3px;
   border-style: solid;
+  border-radius: 20px;
+  border-color: rgba(253, 112, 20, 0.8);
   background: transparent
     linear-gradient(
       to top left,
-      rgba(129, 249, 203, 0.2) 0%,
-      rgba(77, 89, 88, 0.2) 40%,
-      rgba(49, 128, 135, 0.2) 100%
+      rgba(253, 112, 20, 0.3) 20%,
+      rgba(253, 112, 20, 0.5) 40%,
+      rgba(253, 112, 20, 0.7) 80%
     );
-  border-image-source: linear-gradient(
-    to top left,
-    rgba(77, 89, 88, 1) 0%,
-    rgba(33, 37, 41, 1) 40%,
-    rgba(25, 135, 84, 1) 100%
-  );
-  border-image-slice: 1;
-  padding: 4px;
+
+  padding: 4px; */
   height: 60px;
   transition: all 0.5s linear;
   right: 20px;
@@ -50,21 +45,22 @@ body {
   letter-spacing: 0.05rem;
   font-size: 1.5rem;
   font-weight: 400;
-  text-align: center;
-  text-decoration: none;
   text-transform: uppercase;
-  color: #333;
+  color: rgb(34, 40, 49);
 }
 
 .custom-button {
   margin: 2px;
   height: 40px;
   margin-left: 10px;
+  color: rgb(253, 112, 20);
 }
 
 .custom-header {
   height: 60px;
   white-space: nowrap;
+  background-color: rgb(253, 112, 20);
+  color: rgb(rgb(34, 40, 49));
 }
 
 .strike-through {
@@ -85,6 +81,11 @@ body {
   min-width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.custom-table-div {
+  margin-bottom: 20%;
+  align-content: center;
 }
 
 .project-list-image {
@@ -110,25 +111,23 @@ body {
   opacity: 0.8;
   position: absolute;
   display: block;
-  top: calc(50% - 2.5rem - 5px);
-  left: calc(50% - 6rem - 5px);
+  top: calc(20% - 2.5rem - 5px);
+  left: calc(80% - 6rem - 5px);
   height: 8rem;
   width: 15rem;
   margin: auto;
   background: transparent
     linear-gradient(
       to top left,
-      rgba(129, 249, 203, 0.2) 0%,
-      rgba(77, 89, 88, 0.2) 40%,
-      rgba(49, 128, 135, 0.2) 100%
+      rgba(253, 112, 20, 0.3) 20%,
+      rgba(253, 112, 20, 0.5) 40%,
+      rgba(253, 112, 20, 0.7) 80%
     );
-  border-image-source: linear-gradient(
-    to top left,
-    rgba(77, 89, 88, 1) 0%,
-    rgba(33, 37, 41, 1) 40%,
-    rgba(25, 135, 84, 1) 100%
-  );
-  border-image-slice: 1;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px;
+  border-color: rgba(253, 112, 20, 0.8);
   transition: transform 0.25s;
   letter-spacing: 0.2rem;
   font-size: 1.5rem;
@@ -146,9 +145,103 @@ body {
 .inline-header {
   margin: 0;
   display: inline-block;
+  padding-bottom: 10px;
 }
 
 .project-add-button {
+  background: rgba(black, 0.1);
+  box-shadow: 0px 0px 0px 5px rgba(white, 0.95);
+  border: 1px solid white;
+  transition: 0.3s all ease-in-out;
+}
+
+.project-add-button:hover {
+  background: rgba(black, 0.2);
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.85);
+}
+
+.logo-home {
+  position: fixed;
+  display: block;
+  top: calc(80% - 2.5rem - 5px);
+  left: calc(50% - 6rem - 5px);
+  width: 15rem;
+  margin: auto;
+  text-align: center;
+  z-index: -999;
+}
+
+.navbar-custom {
+  font-weight: 450;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.fancy-button {
+  text-decoration: none;
+  color: rgb(34, 40, 49);
+  background-color: rgb(253, 112, 20);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px;
+  border-color: rgba(253, 112, 20, 0.8);
+  right: 9%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+  transition: all 0.2s ease-out;
+}
+.fancy-button:hover {
+  filter: blur(0.25px) brightness(0.95);
+  background-color: rgb(34, 40, 49);
+  color: rgb(253, 112, 20);
+}
+
+.fancy-button2 {
+  text-decoration: none;
+  color: rgb(34, 40, 49);
+  background-color: rgba(25, 135, 84, 0.561);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px;
+  border-color: rgba(253, 112, 20, 0.8);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+}
+.fancy-button2:hover {
+  filter: blur(0.25px) brightness(0.95);
+  background-color: rgb(34, 40, 49);
+  color: rgb(253, 112, 20);
+}
+
+.logout-button {
   float: right;
-  right: auto;
+}
+
+.custom-h3 {
+  margin: 0;
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.simple-error {
+  color: red;
+}
+
+.image-thumbnails {
+  height: 200px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.pl-15 {
+  padding-left: 15px !important;
 }

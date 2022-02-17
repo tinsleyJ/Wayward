@@ -1,28 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, withRouter, useHistory } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const Header = () => {
-  const [signInUser, setSignInUser] = useState({
-    email: "",
-    password: "",
-  });
+  let history = useHistory();
 
-  const changeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    const tempSignIn = { ...signInUser };
-    tempSignIn[name] = value;
-    setSignInUser(tempSignIn);
+  const logout = () => {
+    localStorage.removeItem("loggedIn");
+    history.push("/success");
   };
 
+  const isLoggedIn = localStorage.getItem("loggedIn");
   return (
     <div>
       <header>
-        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark custom-header">
+        <Navbar className="navbar navbar-expand-md fixed-top custom-header navbar-custom">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
-              Wayward
+              WAYWARD
             </Link>
             <button
               className="navbar-toggler"
@@ -47,49 +43,43 @@ const Header = () => {
                     About
                   </Link>
                 </li>
-                <div className="dropdown">
+                <div className="dropdown custom-header-button">
                   <Dropdown>
-                    <Dropdown.Toggle variant="success">
-                      Test Links
-                    </Dropdown.Toggle>
+                    <Dropdown.Toggle>Test Links</Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item href="/todo">Todo</Dropdown.Item>
                       <Dropdown.Item href="/user-list">User List</Dropdown.Item>
-                      <Dropdown.Item href="/display-image">
-                        Image Test Page
-                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
               </ul>
-              <form className="d-flex custom-button">
-                <input
-                  className="form-control me-2"
-                  onChange={changeHandler}
-                  name="email"
-                  value={signInUser.email}
-                  type="email"
-                  placeholder="Email"
-                  aria-label="Email"
-                />
-                <input
-                  className="form-control me-2"
-                  onChange={changeHandler}
-                  name="password"
-                  value={signInUser.password}
-                  type="password"
-                  placeholder="Password"
-                  aria-label="Password"
-                />
-                <button className="btn btn-outline-success" type="button">
-                  Sign in
-                </button>
-              </form>
+              {isLoggedIn ? (
+                <span>
+                  <h3 className="custom-h3">
+                    Welcome {localStorage.getItem("loggedIn")}
+                  </h3>
+                  <button
+                    className="logout-button btn btn-success"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </span>
+              ) : (
+                <Nav>
+                  <Link to={"/login"} className="nav-link">
+                    Login
+                  </Link>
+                  <Link to={"/register"} className="nav-link">
+                    Register
+                  </Link>
+                </Nav>
+              )}
             </div>
           </div>
-        </nav>
+        </Navbar>
       </header>
     </div>
   );
 };
-export default Header;
+export default withRouter(Header);
