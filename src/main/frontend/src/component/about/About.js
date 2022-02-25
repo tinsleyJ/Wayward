@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div className="w3-content" style={{ "max-width": "1200px" }}>
+    <div className="container " style={{ "max-width": "1200px" }}>
       {/* First Grid: Logo & About   */}
       <div className="w3-row">
         <div className="w3-half w3-container">
@@ -22,7 +22,8 @@ const About = () => {
         <div className="w3-half w3-container">
           <p className="w3-xlarge w3-text-grey">----------------------------</p>
           <p className="w3-xlarge w3-text-grey">
-            Add functionality to show recent projects, images, names
+            Add functionality to show recent projects, images, names from all
+            accounts
           </p>
           <p className="w3-xlarge w3-text-grey">----------------------------</p>
         </div>

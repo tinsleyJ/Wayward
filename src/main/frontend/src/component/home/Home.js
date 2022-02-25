@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  localStorage.getItem("UserLogin");
-  // adjust once login tokens are implemented
-  // returns a different homepage if you are signed in
   if (!localStorage.getItem("loggedIn")) {
     return (
       <div className="container">
@@ -22,7 +19,7 @@ const Home = () => {
     return (
       <div className="container">
         <h3>Hi {localStorage.getItem("loggedIn")}</h3>
-        <p> Lets get organized and stay motivated.</p>{" "}
+        <p> It's time to get organized and stay motivated.</p>{" "}
         <Link to="/project" className="fancy-button bg-gradient3">
           See your project library
         </Link>

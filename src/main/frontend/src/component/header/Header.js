@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div>
       <header>
-        <Navbar className="navbar navbar-expand-md fixed-top custom-header navbar-custom">
+        <Navbar className=" fixed-top header navbar-custom">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               WAYWARD
@@ -45,10 +45,11 @@ const Header = () => {
                 </li>
                 <div className="dropdown custom-header-button">
                   <Dropdown>
-                    <Dropdown.Toggle>Test Links</Dropdown.Toggle>
+                    <Dropdown.Toggle>Admin</Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item href="/todo">Todo</Dropdown.Item>
                       <Dropdown.Item href="/user-list">User List</Dropdown.Item>
+                      <Dropdown.Item href="/config">Config</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>

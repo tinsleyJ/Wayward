@@ -53,7 +53,7 @@ const Login = () => {
     );
   } else {
     return (
-      <div className="sign-up-container">
+      <div className="container">
         <form className="row g-3">
           <h3> Sign in below</h3> <p className="simple-error">{user.error}</p>
           <div className="col-md-6">
